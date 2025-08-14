@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Registered Attendees</h1>
+<table border="1" cellpadding="8">
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Event Name</th>
+<th>Actions</th>
+</tr>
+{% for a in attendees %}
+<tr>
+<td>{{ a.name }}</td>
+<td>{{ a.email }}</td>
+<td>{{ a.event_name }}</td>
+<td>
+    <a href="{{ url_for('main.edit_attendee', id=a.id) }}">Edit</a> |
+    <a href="{{ url_for('main.delete_attendee', id=a.id) }}">Delete</a>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

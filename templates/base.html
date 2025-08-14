@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Event Registration{% endblock %}</title>
+</head>
+<body>
+<nav>
+    <a href="{{ url_for('main.index') }}">Home</a> |
+    <a href="{{ url_for('main.add_attendee') }}">Register</a>
+</nav>
+<hr>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul>
+        {% for category, msg in messages %}
+            <li><strong>{{ category }}:</strong> {{ msg }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+{% block content %}{% endblock %}
+</body>
+</html>
